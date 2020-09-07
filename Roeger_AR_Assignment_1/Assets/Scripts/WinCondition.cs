@@ -5,43 +5,27 @@ using UnityEngine.UI;
 
 public class WinCondition : MonoBehaviour
 {
-    public Material targetMat;
+    public Collider targetCol;
     private List<Collider> currentCollisions;
     public Text winText;
-    public bool isCollided;
+    public bool isCollided, targetHit;
 
     public void Start()
     {
-        currentCollisions = new List<Collider>();
         isCollided = false;
     }
 
     public void Update()
     {
-        StartCoroutine(CheckImpact());
-    }
-
-    // Throw in some win conditions for when our target block hits the ground
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (!currentCollisions.Contains(other))
-        {
-            currentCollisions.Add(other);
-        }
+        if (isCollided == true)
+            StartCoroutine(CheckImpact());
     }
 
     private IEnumerator CheckImpact()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(2f);
 
-        for (int i = 0; i < currentCollisions.Count; i++)
-        {
-            if (currentCollisions[i].GetComponent<MeshRenderer>().material == targetMat)
-                isCollided = true;
-        }
-
-        if (isCollided)
+        if (targetHit)
             winText.text = "Nice shot!";
         else
             winText.text = "So close...";

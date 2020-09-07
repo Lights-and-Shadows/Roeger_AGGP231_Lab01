@@ -14,6 +14,7 @@ public class DragSpheres : MonoBehaviour
 
     public Transform sphereTrans;
     public float moveSpeed = 5f;
+    public WinCondition condition;
 
     public Transform targetBlock;
 
@@ -106,15 +107,6 @@ public class DragSpheres : MonoBehaviour
 
                 rb.AddForce(velocity, ForceMode.Impulse);
             }
-        }
-    }
-
-    // Let's add a little explosive force to spice things up a bit
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Target")
-        {
-            collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(10f, collision.transform.position, 0.4f);
         }
     }
 }

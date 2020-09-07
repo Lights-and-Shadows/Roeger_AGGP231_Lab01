@@ -962,6 +962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sphereTrans: {fileID: 0}
   moveSpeed: 5
+  condition: {fileID: 524221295}
   targetBlock: {fileID: 67518927}
   rb: {fileID: 1115922605}
 --- !u!1 &244613714
@@ -1836,9 +1837,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 524221293}
-  - component: {fileID: 524221294}
   - component: {fileID: 524221295}
   - component: {fileID: 524221296}
+  - component: {fileID: 524221297}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -1860,19 +1861,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &524221294
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524221292}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &524221295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1885,9 +1873,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da85044b4f655147bd5b6dd123728d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMat: {fileID: 2100000, guid: a45b9da12bc4ebc459dc9f426d8241c3, type: 2}
+  targetCol: {fileID: 67518928}
   winText: {fileID: 1905219791}
   isCollided: 0
+  targetHit: 0
 --- !u!54 &524221296
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1903,7 +1892,20 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!65 &524221297
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524221292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &600109855
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,6 +3176,7 @@ GameObject:
   - component: {fileID: 1115922608}
   - component: {fileID: 1115922607}
   - component: {fileID: 1115922605}
+  - component: {fileID: 1115922606}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Draggable
@@ -3197,6 +3200,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1115922606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115922604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3780cbade87706e438eed64867062d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: {fileID: 524221295}
 --- !u!135 &1115922607
 SphereCollider:
   m_ObjectHideFlags: 0
